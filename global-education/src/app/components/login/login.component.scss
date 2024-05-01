@@ -22,7 +22,6 @@ h1{
     margin-bottom:2rem;
 }
 input{
-    margin-bottom:2rem;
     height: 1.8rem;
     width: 18rem;
     border-radius:10px;
@@ -30,15 +29,22 @@ input{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+.errors{
+    margin: 0.5rem;
+    height: 4rem;
+}
+
+.errors p{
+    margin: .2rem;
+    color: white;
+}
 form{
     text-align: center;
     padding-bottom: 1rem ;
     width: 35rem;
 }
 
-.boton{
-    margin-top: 2rem;
-}
+
 .boton a{
     margin-right: 50%;
     color: white;

@@ -1,14 +1,32 @@
 <div class="general-container">
     <div class="login-container">
         <h1 align="center">LOGIN</h1>
-        <form method="post">
+        <!-- <form method="post">
             <input type="email" placeholder="Inserte su email"><br>
             <input type="password" name="" id="" placeholder="Inserte su contraseña">
             <div class="boton">
                 <a href="">¿No tiene cuenta?</a>
                 <button type="submit" routerLink="home" >ENTRAR</button>
             </div>
+        </form> -->
+        <form method="post" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="errors">
+            <input type="email" formControlName="email">
+            
+                @if(loginForm.controls.email.invalid && loginForm.controls.email.touched){
+                <p>Email invalido</p>
+         }
+            </div>
+            <div class="errors">
+            <input type="text" formControlName="password">
+                @if(loginForm.controls.password.invalid && loginForm.controls.password.touched){
+                    <p>Contraseña invalida</p>
+                }
+            </div>
+            <div class="boton">
+                <a href="">¿No tiene cuenta?</a>
+                <button type="submit" routerLink="home" [disabled]="!loginForm.valid">ENTRAR</button>
+            </div>
         </form>
-        
     </div>
 </div>

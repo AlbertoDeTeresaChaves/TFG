@@ -1,0 +1,21 @@
+<h1 align="center">LOGIN</h1>
+
+<form method="post" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="errors">
+        <input type="email" formControlName="email" placeholder="Ingrese su Email...">
+
+        @if(loginForm.controls.email.invalid && loginForm.controls.email.touched){
+        <p>Email invalido</p>
+        }
+    </div>
+    <div class="errors">
+        <input type="text" formControlName="password" placeholder="Ingrese su Contraseña...">
+        @if(loginForm.controls.password.invalid && loginForm.controls.password.touched){
+        <p>Contraseña invalida</p>
+        }
+    </div>
+    <div class="boton">
+        <a routerLink="/auth/register">¿No tiene cuenta?</a>
+        <button type="submit" routerLink="home" [disabled]="!loginForm.valid">ENTRAR</button>
+    </div>
+</form>

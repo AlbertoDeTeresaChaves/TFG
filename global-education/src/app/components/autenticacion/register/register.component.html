@@ -1,0 +1,27 @@
+<h1 align="center">REGISTER</h1>
+
+<form method="post" [formGroup]="registerForm">
+    <div class="errors">
+        <input type="text" formControlName="name" placeholder="Ingrese su Nombre...">
+
+        @if(registerForm.controls.name.invalid && registerForm.controls.name.touched){
+        <p>Nombre invalido</p>
+        }
+    </div>
+    <div class="errors">
+        <input type="email" formControlName="email" placeholder="Ingrese su Email...">
+
+        @if(registerForm.controls.email.invalid && registerForm.controls.email.touched){
+        <p>Email invalido</p>
+        }
+    </div>
+    <div class="errors">
+        <input type="text" formControlName="password" placeholder="Ingrese su Contraseña...">
+        @if(registerForm.controls.password.invalid && registerForm.controls.password.touched){
+        <p>Contraseña invalida</p>
+        }
+    </div>
+    <div class="boton">
+        <button type="submit" routerLink="home" [disabled]="!registerForm.valid">REGISTRARSE</button>
+    </div>
+</form>

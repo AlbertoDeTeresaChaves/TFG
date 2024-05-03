@@ -37,28 +37,12 @@ input{
 .errors p{
     margin: .2rem;
     color: white;
+    font-size: 1rem;
 }
 form{
     text-align: center;
     padding-bottom: 1rem ;
     width: 35rem;
-}
-
-
-.boton a{
-    margin-right: 50%;
-    color: white;
-    font-size: 1rem;
-}
-
-.boton a:hover{
-    color:rgb(245, 241, 241);
-}
-
-.boton a:active{
-    color:rgb(230, 222, 222);
-    font-size: 1rem;
-
 }
 
 .boton button{
@@ -81,5 +65,11 @@ form{
 .boton button:active{
     background-color: rgb(221, 9, 9);
     color:rgb(230, 222, 222);
+
+}
+
+.boton button:disabled{
+    background-color: rgb(150, 15, 15);
+    color:rgb(163, 149, 149);
 
 }

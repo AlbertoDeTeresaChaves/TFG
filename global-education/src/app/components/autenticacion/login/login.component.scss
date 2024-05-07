@@ -1,97 +1,69 @@
-.general-container{
-    display: grid;
-    place-items: center;
-    background-color: rgb(37,37,37);
-    width: 100%;
-    height: 100vh;
-}
-
-.login-container{
-    background-color: rgb(90, 86, 86);
-    margin:8rem 15rem;
-    padding: 4rem 4rem;
-    border-radius: 25px;
-    font-size: 1.2rem;
-    width: 35rem;
-    box-shadow: 0px 0px 36px 0px rgba(0,0,0,0.75);
-
-}
-
-h1{
-    color: white;
-    margin-bottom:2rem;
-}
-
-input{
-    height: 1.8rem;
-    width: 18rem;
-    border-radius:10px;
-    border-style: none;
+h1 {
+    color: rgb(0, 0, 0);
+    margin-bottom: 2rem;
+    font-size: 2.3rem;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-input:focus{
-    border-color:blue;
-}
-
-.errors{
-    margin: 0.5rem;
-    height: 4rem;
-}
-
-.errors p{
-    margin: .2rem;
-    color: white;
-    font-size: 1rem;
-}
-form{
-    text-align: center;
-    padding-bottom: 1rem ;
-    width: 35rem;
-}
-
-
-.boton a{
-    margin-right: 50%;
-    color: white;
-    font-size: 1rem;
-}
-
-.boton a:hover{
-    color:rgb(245, 241, 241);
-}
-
-.boton a:active{
-    color:rgb(230, 222, 222);
-    font-size: 1rem;
-
-}
-
-.boton button{
-    background-color: rgb(255, 0, 0);
-    width: 8rem;
-    height: 2.3rem;
-    border-radius: 10px;
-    border-style: none;
-    color: white;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
 }
-.boton button:hover{
+
+form {
+    text-align: center;
+}
+
+.form-style-general {
+    width: 65%;
+}
+
+::ng-deep .mdc-text-field--outlined {
+    --mdc-outlined-text-field-container-shape: 25px !important;
+}
+
+mat-form-field {
+    margin-bottom: .8rem;
+}
+
+::ng-deep .mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label {
+    font-weight: bold;
+}
+
+::ng-deep .mat-mdc-text-field-wrapper:hover {
+    background-color: rgb(247, 240, 240) !important;
+    border-radius: 25px !important;
+}
+
+a {
+
+    color: rgb(0, 0, 0);
+    font-size: 1rem;
+}
+
+a:hover {
+    color: rgb(43, 40, 40);
+}
+
+a:active {
+    color: rgb(54, 50, 50);
+    font-size: 1rem
+}
+
+button {
+    width: 75%;
+    height: 3rem;
+    border-radius: 25px;
+    background-color: rgb(21, 21, 22);
+    border: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+button:hover {
     cursor: pointer;
-    background-color: rgb(243, 5, 5);
-    color:rgb(245, 241, 241);
-
+    background-color: rgb(32, 32, 34);
 }
 
-.boton button:active{
-    background-color: rgb(221, 9, 9);
-    color:rgb(230, 222, 222);
-
-}
-
-.boton button:disabled{
-    background-color: rgb(150, 15, 15);
-    color:rgb(163, 149, 149);
-
+button:active {
+    background-color: rgb(41, 41, 44);
 }

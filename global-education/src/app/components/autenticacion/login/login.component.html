@@ -1,21 +1,28 @@
 <h1 align="center">LOGIN</h1>
 
-<form method="post" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <div class="errors">
-        <input type="email" formControlName="email" placeholder="Ingrese su Email...">
-
-        @if(loginForm.controls.email.invalid && loginForm.controls.email.touched){
-        <p>Email invalido</p>
+<form method="post">
+    <mat-form-field class="form-style-general" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput [formControl]="emailFormControl"  [errorStateMatcher]="matcher" placeholder="Ingrese su Email...">
+        @if(emailFormControl.hasError('email')){
+            <mat-error>Pon un email valida</mat-error>
         }
-    </div>
-    <div class="errors">
-        <input type="text" formControlName="password" placeholder="Ingrese su Contraseña...">
-        @if(loginForm.controls.password.invalid && loginForm.controls.password.touched){
-        <p>Contraseña invalida</p>
+        @if(emailFormControl.hasError('required')){
+            <mat-error>El email es <strong>requerido</strong></mat-error>
         }
-    </div>
-    <div class="boton">
+    </mat-form-field><br>
+    <mat-form-field class="form-style-general" appearance="outline">
+        <mat-label>Password</mat-label>
+        <input type="text" matInput [formControl]="passwordFormControl"  [errorStateMatcher]="matcher" placeholder="Ingrese su Contraseña...">
+        @if(passwordFormControl.hasError('password')){
+            <mat-error>Pon una contraseña valida</mat-error>
+        }
+        @if(passwordFormControl.hasError('required')){
+            <mat-error>El password es <strong>requerido</strong></mat-error>
+        }
+    </mat-form-field>
+        <br>
+        <button type="submit" routerLink="/home">ENTRAR</button><br>
         <a routerLink="/auth/register">¿No tiene cuenta?</a>
-        <button type="submit" routerLink="home" [disabled]="!loginForm.valid">ENTRAR</button>
-    </div>
+    
 </form>

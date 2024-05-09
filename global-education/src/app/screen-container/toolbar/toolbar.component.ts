@@ -13,5 +13,5 @@ import {MatButtonModule} from '@angular/material/button';
   styleUrl: './toolbar.component.scss'
 })
 export class ToolbarComponent {
-
+  
 }

@@ -2,8 +2,8 @@ import { Routes } from '@angular/router';
 import { LoginComponent } from './components/autenticacion/login/login.component';
 import { RegisterComponent } from './components/autenticacion/register/register.component';
 import { AutenticacionContainerComponent } from './components/autenticacion/autenticacion-container/autenticacion-container.component';
-import { HomeContainerComponent } from './screen-container/home-container/home-container.component';
-import { ScreenWrapperComponent } from './screen-container/screen-wrapper/screen-wrapper.component';
+import { HomeContainerComponent } from './components/screen-container/home-container/home-container.component';
+import { ScreenWrapperComponent } from './components/screen-container/screen-wrapper/screen-wrapper.component';
 export const routes: Routes = [
     {
         path: 'auth',

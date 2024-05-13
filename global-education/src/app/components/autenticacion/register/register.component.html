@@ -1,34 +1,36 @@
 <h1 align="center">REGISTER</h1>
 
-<form method="post">
+<form method="post" [formGroup]="registerFormGroup">
     <mat-form-field class="form-style-general" appearance="outline">
         <mat-label>Nombre</mat-label>
-        <input type="text" matInput [formControl]="nameFormControl"  [errorStateMatcher]="matcher" placeholder="Ingrese su Nombre...">
+        <input type="text" matInput [formControl]="registerFormGroup.controls.name"  [errorStateMatcher]="matcher" placeholder="Ingrese su Nombre...">
 
-        @if(nameFormControl.hasError('required')){
+        @if(registerFormGroup.controls.name.hasError('required')){
             <mat-error>El nombre es <strong>requerido</strong></mat-error>
         }
     </mat-form-field>    
     <mat-form-field class="form-style-general" appearance="outline">
         <mat-label>Email</mat-label>
-        <input type="email" matInput [formControl]="emailFormControl"  [errorStateMatcher]="matcher" placeholder="Ingrese su Email...">
-        @if(emailFormControl.hasError('email')){
+        <input type="email" matInput [formControl]="registerFormGroup.controls.email"  [errorStateMatcher]="matcher" placeholder="Ingrese su Email...">
+        @if(registerFormGroup.controls.email.hasError('email')){
             <mat-error>Pon un email valida</mat-error>
         }
-        @if(emailFormControl.hasError('required')){
+        @if(registerFormGroup.controls.email.hasError('required')){
             <mat-error>El email es <strong>requerido</strong></mat-error>
         }
     </mat-form-field><br>
     <mat-form-field class="form-style-general" appearance="outline">
         <mat-label>Password</mat-label>
-        <input type="text" matInput [formControl]="passwordFormControl"  [errorStateMatcher]="matcher" placeholder="Ingrese su Contraseña...">
-        @if(passwordFormControl.hasError('password')){
+        <input type="password" matInput [formControl]="registerFormGroup.controls.password"  [errorStateMatcher]="matcher" placeholder="Ingrese su Contraseña...">
+        @if(registerFormGroup.controls.password.hasError('password')){
             <mat-error>Pon una contraseña valida</mat-error>
         }
-        @if(passwordFormControl.hasError('required')){
+        @if(registerFormGroup.controls.password.hasError('required')){
             <mat-error>El password es <strong>requerido</strong></mat-error>
         }
     </mat-form-field>
     <br>
-        <button type="submit" routerLink="home">REGISTRARSE</button>
+    <button (click)="onSubmit()" [disabled]="!registerFormGroup.valid">REGISTRARSE</button>
 </form>
+
+  

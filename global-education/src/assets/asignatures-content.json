@@ -1,0 +1,50 @@
+{
+    "asignatures": [
+        {
+            "math": [
+                {
+                    "name": "Numeros naturales",
+                    "img": "",
+                    "location": ""
+                },
+                {
+                    "name": "Operaciones con numeros naturales",
+                    "img": "",
+                    "location": ""
+                },
+                {
+                    "name": "Teoria de numeros",
+                    "bimg": "",
+                    "location": ""
+                },
+                {
+                    "name": "Enteros",
+                    "img": "",
+                    "location": ""
+                }
+            ],
+            "english": [
+                {
+                    "name": "Vocabulary",
+                    "img": "",
+                    "location": ""
+                },
+                {
+                    "name": "Grammar",
+                    "img": "",
+                    "location": ""
+                },
+                {
+                    "name": "Writing",
+                    "bimg": "",
+                    "location": ""
+                },
+                {
+                    "name": "Lisening",
+                    "img": "",
+                    "location": ""
+                }
+            ]
+        }
+    ]
+}

@@ -13,7 +13,7 @@
     </mat-form-field><br>
     <mat-form-field class="form-style-general" appearance="outline">
         <mat-label>Password</mat-label>
-        <input type="text" matInput [formControl]="passwordFormControl"  [errorStateMatcher]="matcher" placeholder="Ingrese su Contraseña...">
+        <input type="password" matInput [formControl]="passwordFormControl"  [errorStateMatcher]="matcher" placeholder="Ingrese su Contraseña...">
         @if(passwordFormControl.hasError('password')){
             <mat-error>Pon una contraseña valida</mat-error>
         }

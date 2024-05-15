@@ -7,8 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class LoginService {
 
-  constructor(private http : HttpClient) { }
-
+  constructor(private http : HttpClient) {}
   getAsignaturesContent(): Observable<AsignatureStructure>{
     return this.http.get<AsignatureStructure>("../assets/asignatures-content.json");
   }

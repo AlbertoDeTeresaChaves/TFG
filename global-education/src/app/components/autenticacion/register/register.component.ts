@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule, FormControl, Validators, FormGroupDirective, NgForm, FormGroup } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatInputModule, MatFormField } from '@angular/material/input';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { RegisterPopupComponent } from '../../../pop-ups/register-popup/register-popup.component';
+import { ApiService } from '../../../services/api/api.service';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -22,10 +23,23 @@ export class DialogContentExampleDialog { }
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit{
+  
 
-  constructor(private dialog: MatDialog) { 
+  constructor(private dialog: MatDialog, private apiService:ApiService) { 
+
   }
+
+
+  ngOnInit(): void {
+    let datos: any[] = [];
+              
+  this.apiService.getDatos().forEach(data =>{
+    datos = data
+  })
+  console.log(datos)
+  }
+
 
   registerFormGroup = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -44,4 +58,5 @@ export class RegisterComponent {
   onSubmit() {
     this.openDialog()
   }
+
 }

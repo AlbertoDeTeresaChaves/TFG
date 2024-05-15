@@ -7,10 +7,10 @@ app.use(cors());
 app.use(express.json());
 
 const connection = mysql.createConnection({
-    host: '127.0.0.1', // Cambia esto si tu base de datos está en otro lugar
-    user: 'root', // Tu usuario de MySQL
-    password: '1234', // Tu contraseña de MySQL
-    database: 'perseo' // El nombre de tu base de datos
+    host: '127.0.0.1', 
+    user: 'root',
+    password: '1234', 
+    database: 'perseo'
   });
   
   // Conectar a la base de datos
@@ -23,7 +23,7 @@ const connection = mysql.createConnection({
   });
 
   app.get('/api/perseo', (req, res) => {
-    const query = 'SELECT * from usuarios'; // Ajusta esta consulta según tu necesidad
+    const query = 'SELECT * from usuarios'; 
     connection.query(query, (err, results) => {
       if (err) {
         console.error('Error ejecutando la consulta:', err);

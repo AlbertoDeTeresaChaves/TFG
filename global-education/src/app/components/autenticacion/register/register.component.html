@@ -1,6 +1,6 @@
 <h1 align="center">REGISTER</h1>
 
-<form method="post" [formGroup]="registerFormGroup">
+<form method="post" [formGroup]="registerFormGroup" >
     <mat-form-field class="form-style-general" appearance="outline">
         <mat-label>Nombre</mat-label>
         <input type="text" matInput [formControl]="registerFormGroup.controls.name"  [errorStateMatcher]="matcher" placeholder="Ingrese su Nombre...">

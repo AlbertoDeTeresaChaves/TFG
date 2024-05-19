@@ -5,6 +5,8 @@ import { MatInputModule, MatFormField } from '@angular/material/input';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { RegisterPopupComponent } from '../../../pop-ups/register-popup/register-popup.component';
 import { ApiService } from '../../../services/api/api.service';
+import { EmailExistPopupComponent } from '../../../pop-ups/email-exist-popup/email-exist-popup.component';
+import { RegisterErrorPopupComponent } from '../../../pop-ups/register-error-popup/register-error-popup.component';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -23,21 +25,21 @@ export class DialogContentExampleDialog { }
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })
-export class RegisterComponent implements OnInit{
-  
+export class RegisterComponent implements OnInit {
 
-  constructor(private dialog: MatDialog, private apiService:ApiService) { 
+  datos2: any[] = [];
+
+  constructor(private dialog: MatDialog, private apiService: ApiService) {
 
   }
 
 
   ngOnInit(): void {
     let datos: any[] = [];
-              
-  this.apiService.getDatos().forEach(data =>{
-    datos = data
-  })
-  console.log(datos)
+    this.apiService.getDatos().forEach(data => {
+      datos = data
+    })
+
   }
 
 
@@ -51,12 +53,25 @@ export class RegisterComponent implements OnInit{
 
   public validUser!: boolean;
 
-  openDialog() {
-    this.dialog.open(RegisterPopupComponent)
+  openDialog(status: number) {
+    if (status == 201) {
+      this.dialog.open(RegisterPopupComponent)
+    }
+    if (status == 200) {
+      this.dialog.open(EmailExistPopupComponent)
+    }
+    if (status == 500) {
+      this.dialog.open(RegisterErrorPopupComponent)
+    }
   }
 
   onSubmit() {
-    this.openDialog()
-  }
+    //
+    const userData = this.registerFormGroup.value
+    this.apiService.getPruebaMail(userData).subscribe(data => {
+      this.openDialog(data.status)
 
+    })
+
+  }
 }

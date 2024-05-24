@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroupDirective, NgForm, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormGroupDirective, NgForm, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatInputModule, MatFormField } from '@angular/material/input';
-import { RouterOutlet,RouterLink } from '@angular/router';
+import { RouterOutlet,RouterLink, Router } from '@angular/router';
+import { ApiService } from '../../../services/api/api.service';
+import { LoginErrorPopupComponent } from '../../../pop-ups/login-error-popup/login-error-popup.component';
+import { MatDialog } from '@angular/material/dialog';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -20,14 +23,32 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class LoginComponent {
 
-  constructor(){}
-
-    emailFormControl = new FormControl('',[Validators.email, Validators.required]);
-    passwordFormControl = new FormControl('',Validators.required);
-
+  constructor(private apiService : ApiService, private dialog : MatDialog, private route : Router){}
+    loginFormGroup = new FormGroup({
+      email : new FormControl('',[Validators.email, Validators.required]),
+      password : new FormControl('',Validators.required)
+    })
+    
     matcher = new MyErrorStateMatcher();
 
+    openDialog(status: number) {
+
+      if (status == 200) {
+        this.route.navigate(['/GlobalEducation/home']);
+      }
+      if (status == 500) {
+        this.dialog.open(LoginErrorPopupComponent)
+      }
+    }
   onSubmit(){
-    console.log("Hola")
+    const userData = this.loginFormGroup.value;
+    this.apiService.isUserLoginValid(userData).subscribe(data =>{
+      this.openDialog(data.status)
+    },
+    error =>{
+      this.openDialog(error.status)
+    }  
+  );
+
   }
 }

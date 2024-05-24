@@ -1,28 +1,28 @@
 <h1 align="center">LOGIN</h1>
 
-<form method="post">
+<form method="post" [formGroup]="loginFormGroup">
     <mat-form-field class="form-style-general" appearance="outline">
         <mat-label>Email</mat-label>
-        <input type="email" matInput [formControl]="emailFormControl"  [errorStateMatcher]="matcher" placeholder="Ingrese su Email...">
-        @if(emailFormControl.hasError('email')){
+        <input type="email" matInput [formControl]="loginFormGroup.controls.email"  [errorStateMatcher]="matcher" placeholder="Ingrese su Email...">
+        @if(loginFormGroup.controls.email.hasError('email')){
             <mat-error>Pon un email valida</mat-error>
         }
-        @if(emailFormControl.hasError('required')){
+        @if(loginFormGroup.controls.email.hasError('required')){
             <mat-error>El email es <strong>requerido</strong></mat-error>
         }
     </mat-form-field><br>
     <mat-form-field class="form-style-general" appearance="outline">
         <mat-label>Password</mat-label>
-        <input type="password" matInput [formControl]="passwordFormControl"  [errorStateMatcher]="matcher" placeholder="Ingrese su Contraseña...">
-        @if(passwordFormControl.hasError('password')){
+        <input type="password" matInput [formControl]="loginFormGroup.controls.password"  [errorStateMatcher]="matcher" placeholder="Ingrese su Contraseña...">
+        @if(loginFormGroup.controls.password.hasError('password')){
             <mat-error>Pon una contraseña valida</mat-error>
         }
-        @if(passwordFormControl.hasError('required')){
+        @if(loginFormGroup.controls.password.hasError('required')){
             <mat-error>El password es <strong>requerido</strong></mat-error>
         }
     </mat-form-field>
         <br>
-        <button type="submit" routerLink="/GlobalEducation/home">ENTRAR</button><br>
+        <button type="submit" (click)="onSubmit()">ENTRAR</button><br>
         <a routerLink="/auth/register">¿No tiene cuenta?</a>
     
 </form>

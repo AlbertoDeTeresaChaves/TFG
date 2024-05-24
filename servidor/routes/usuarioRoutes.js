@@ -61,4 +61,26 @@ router.get('/register/:user',(req, res)=>{
         res.status(200).json({ success: true, message: 'Usuario ya existente', status:200});
       });
 });
+
+
+router.get('/login/:user',(req, res)=>{
+  const datos = JSON.parse(decodeURIComponent(req.params.user));
+  const email = datos.email;
+  const password = datos.password;
+  const selectQuery = 'SELECT * FROM usuarios WHERE correo = ? and contraseña = ?'; // Ajusta esta consulta según tu necesidad
+  connection.query(selectQuery, [email,password], (err, results) => {
+      if (err) {
+        console.error('Error ejecutando la consulta:', err);
+        res.status(500).json({ success: false, message: 'Error en la consulta', status:500});
+        return;
+      }      
+      if (results.length === 0) {
+              console.error('Usuario no encotrando:', err);
+              res.status(500).json({ success: false, message: 'Usuario no encontrado', status:500});
+              return;
+          }      
+      res.status(200).json({ success: true, message: 'Usuario correcto', status:200});
+    });
+});
 module.exports = router;
+

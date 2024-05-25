@@ -6,6 +6,7 @@ import { RouterOutlet,RouterLink, Router } from '@angular/router';
 import { ApiService } from '../../../services/api/api.service';
 import { LoginErrorPopupComponent } from '../../../pop-ups/login-error-popup/login-error-popup.component';
 import { MatDialog } from '@angular/material/dialog';
+import { HomeService } from '../../../services/home/home.service';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -23,7 +24,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class LoginComponent {
 
-  constructor(private apiService : ApiService, private dialog : MatDialog, private route : Router){}
+  constructor(private apiService : ApiService, private homeService : HomeService , private dialog : MatDialog, private route : Router){}
     loginFormGroup = new FormGroup({
       email : new FormControl('',[Validators.email, Validators.required]),
       password : new FormControl('',Validators.required)
@@ -43,7 +44,9 @@ export class LoginComponent {
   onSubmit(){
     const userData = this.loginFormGroup.value;
     this.apiService.isUserLoginValid(userData).subscribe(data =>{
+      this.homeService.setUser(data)
       this.openDialog(data.status)
+      console.log(data)
     },
     error =>{
       this.openDialog(error.status)

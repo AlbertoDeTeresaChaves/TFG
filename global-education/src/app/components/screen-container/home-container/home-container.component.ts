@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../../../services/login.service';
-import { Asignature } from '../../../models/asignatures-structure';
+import { User } from '../../../models/user-structure';
+import { HomeService } from '../../../services/home/home.service';
 
 @Component({
   selector: 'app-home-container',
@@ -9,21 +9,26 @@ import { Asignature } from '../../../models/asignatures-structure';
   templateUrl: './home-container.component.html',
   styleUrl: './home-container.component.scss'
 })
-export class HomeContainerComponent implements OnInit{
-
-  constructor(private appService : LoginService){
-    
-  }
+export class HomeContainerComponent implements OnInit {
+  // username = this.homeService.getUser().data.nombre 
+  username=""
+  constructor(private homeService: HomeService) { }
   ngOnInit(): void {
-    this.getAsigatures()
-}
+    const userData = this.homeService.getUserData()
 
-getAsigatures():Asignature[]{
-  let asigaturesList : Asignature[]=[] 
-  this.appService.getAsignaturesContent().subscribe(data=>{
-    data.asignatures.forEach(asignature =>{asigaturesList.push(asignature)})
-  })
-  console.log(asigaturesList)
-  return asigaturesList;
-}
+    if(userData && userData.data){
+      this.username = userData.data.nombre.toUpperCase()
+    }
+  }
+
+
+
+  // getAsigatures():Asignature[]{
+  //   let asigaturesList : Asignature[]=[] 
+  //   this.appService.getAsignaturesContent().subscribe(data=>{
+  //     data.asignatures.forEach(asignature =>{asigaturesList.push(asignature)})
+  //   })
+  //   console.log(asigaturesList)
+  //   return asigaturesList;
+  // }
 }

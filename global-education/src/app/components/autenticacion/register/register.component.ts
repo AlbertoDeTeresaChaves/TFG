@@ -66,9 +66,9 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    //
+    
     const userData = this.registerFormGroup.value
-    this.apiService.getPruebaMail(userData).subscribe(data => {
+    this.apiService.getUsuarioByEmail(userData).subscribe(data => {
       this.openDialog(data.status)
 
     })

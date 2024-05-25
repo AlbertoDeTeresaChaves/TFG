@@ -16,22 +16,22 @@ router.get('/datos', (req, res) => {
 });
 
 // Ruta para obtener un usuario específico por ID
-router.get('/usuario/:id', (req, res) => {
-  const userId = req.params.id;
-  const query = 'SELECT * FROM usuarios WHERE user_id = ?'; // Ajusta esta consulta según tu necesidad
-  connection.query(query, [userId], (err, results) => {
-    if (err) {
-      console.error('Error ejecutando la consulta:', err);
-      res.status(500).send(err);
-      return;
-    }
-    if (results.length === 0) {
-      res.status(404).send({ message: 'Usuario no encontrado' });
-      return;
-    }
-    res.json(results[0]);
-  });
-});
+// router.get('/usuario/:id', (req, res) => {
+//   const userId = req.params.id;
+//   const query = 'SELECT user_id,nombre,email FROM usuarios WHERE user_id = ?'; // Ajusta esta consulta según tu necesidad
+//   connection.query(query, [userId], (err, results) => {
+//     if (err) {
+//       console.error('Error ejecutando la consulta:', err);
+//       res.status(500).send(err);
+//       return;
+//     }
+//     if (results.length === 0) {
+//       res.status(404).send({ message: 'Usuario no encontrado' });
+//       return;
+//     }
+//     res.json(results[0]);
+//   });
+// });
 
 
 router.get('/register/:user',(req, res)=>{
@@ -67,7 +67,7 @@ router.get('/login/:user',(req, res)=>{
   const datos = JSON.parse(decodeURIComponent(req.params.user));
   const email = datos.email;
   const password = datos.password;
-  const selectQuery = 'SELECT * FROM usuarios WHERE correo = ? and contraseña = ?'; // Ajusta esta consulta según tu necesidad
+  const selectQuery = 'SELECT user_id,nombre,correo FROM usuarios WHERE correo = ? and contraseña = ?'; // Ajusta esta consulta según tu necesidad
   connection.query(selectQuery, [email,password], (err, results) => {
       if (err) {
         console.error('Error ejecutando la consulta:', err);
@@ -79,7 +79,7 @@ router.get('/login/:user',(req, res)=>{
               res.status(500).json({ success: false, message: 'Usuario no encontrado', status:500});
               return;
           }      
-      res.status(200).json({ success: true, message: 'Usuario correcto', status:200});
+      res.status(200).json({ success: true, message: 'Usuario correcto',data:results[0], status:200});
     });
 });
 module.exports = router;

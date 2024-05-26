@@ -15,25 +15,6 @@ router.get('/datos', (req, res) => {
   });
 });
 
-// Ruta para obtener un usuario específico por ID
-// router.get('/usuario/:id', (req, res) => {
-//   const userId = req.params.id;
-//   const query = 'SELECT user_id,nombre,email FROM usuarios WHERE user_id = ?'; // Ajusta esta consulta según tu necesidad
-//   connection.query(query, [userId], (err, results) => {
-//     if (err) {
-//       console.error('Error ejecutando la consulta:', err);
-//       res.status(500).send(err);
-//       return;
-//     }
-//     if (results.length === 0) {
-//       res.status(404).send({ message: 'Usuario no encontrado' });
-//       return;
-//     }
-//     res.json(results[0]);
-//   });
-// });
-
-
 router.get('/register/:user',(req, res)=>{
     const datos = JSON.parse(decodeURIComponent(req.params.user));
     const username = datos.name;
@@ -81,6 +62,35 @@ router.get('/login/:user',(req, res)=>{
           }      
       res.status(200).json({ success: true, message: 'Usuario correcto',data:results[0], status:200});
     });
+});
+
+router.get('/asignaturesType', (req, res) => {
+  const selectQuery = 'SELECT DISTINCT(tipo_curso) FROM cursos';
+  connection.query(selectQuery, (err, results) => {
+      if (err) {
+          console.error('Error ejecutando la consulta', err);
+          res.status(500).json({ success: false, message: 'Error al hacer la consulta', status: 500 });
+      }
+      res.status(200).json(results)
+  })
+});
+
+
+router.get('/asignaturesType/:type', (req, res) => {
+  const type = JSON.parse(decodeURIComponent(req.params.type))
+  const selectQuery = 'SELECT nombre_curso FROM cursos where tipo_curso=?';
+  connection.query(selectQuery, [type],(err, results) => {
+      if (err) {
+          console.error('Error ejecutando la consulta', err);
+          res.status(500).json({ success: false, message: 'Error al hacer la consulta', status: 500 });
+      }
+      if (results.length === 0) {
+        console.error('Lecciones no encotrandas:', err);
+        res.status(500).json({ success: false, message: 'Lecciones no encontradas', status:500});
+        return;
+    }     
+      res.status(200).json(results)
+  })
 });
 module.exports = router;
 

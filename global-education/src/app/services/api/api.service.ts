@@ -1,6 +1,5 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 import { Observable, catchError, throwError } from 'rxjs';
 import { User } from '../../models/user-structure';
 
@@ -25,7 +24,6 @@ export class ApiService {
     return this.http.get<any>(`${this.apiUrl}/register/${encodeURIComponent(JSON.stringify(user))}`)
   }
 
-
   isUserLoginValid(user: any): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/login/${encodeURIComponent(JSON.stringify(user))}`).pipe(
       catchError(this.handleError)
@@ -35,5 +33,11 @@ export class ApiService {
     return throwError(error)
   }
 
+  getAsigaturesTypes():Observable<any>{
+    return this.http.get<any>(`${this.apiUrl}/asignaturesType`);
+  }
 
+  getAsignatureLessonsByType(type: any):Observable<any[]>{
+    return this.http.get<any[]>(`${this.apiUrl}/asignaturesType/${encodeURIComponent(JSON.stringify(type))}`);
+  }
 }

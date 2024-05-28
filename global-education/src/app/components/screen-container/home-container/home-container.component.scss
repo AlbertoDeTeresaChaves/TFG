@@ -7,5 +7,53 @@
 }
 
 .asignature-container{
-    background-color: red;
+    margin: 2rem 2rem 0 2rem;
+}
+
+.lessons-container{
+    display: flex;
+    padding:0 2rem 2rem 2rem;
+    text-align: center;
+    align-content: space-between;
+}
+
+::ng-deep .lesson-content.ng-star-inserted {
+    margin-right: 2rem !important; 
+}
+
+.lesson-content {
+    position: relative; 
+    margin-right: 2rem; 
+}
+
+.lesson-content label {
+    font-weight: bold;
+    font-size: 0.8rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    transition: font-size 0.3s ease-in-out, transform 0.3s ease-in-out, bottom 0.3s ease-in-out;
+    bottom: -1.5rem;
+    position: absolute; 
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    width: min-content; 
+    text-align: center; 
+}
+
+.lesson {
+    background-color: blue;
+    width: 18rem;
+    height: 20rem;
+    border-radius: 15px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.lesson-content:hover .lesson {
+    transform: scale(1.1);
+}
+
+.lesson-content:hover label {
+    font-size: 1rem;
+    bottom: -2.5rem;
+    width: min-content; 
 }

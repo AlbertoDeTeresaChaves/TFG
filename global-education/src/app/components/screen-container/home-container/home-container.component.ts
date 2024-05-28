@@ -9,7 +9,6 @@ import { HomeService } from '../../../services/home/home.service';
   styleUrl: './home-container.component.scss'
 })
 export class HomeContainerComponent implements OnInit {
-  // username = this.homeService.getUser().data.nombre 
   username = ""
   asignaturesType: Array<any> = []
   lessons: any[]=[];
@@ -31,4 +30,9 @@ export class HomeContainerComponent implements OnInit {
 
     }
   }
+  getLessonImageUrl(image: string): string {
+    const parts = image.split('_');
+    return `../../../../assets/front-pages-home/${parts[0]}/${parts[1]}.jpg`;
+}
+
 }

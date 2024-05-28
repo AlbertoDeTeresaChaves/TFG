@@ -5,12 +5,15 @@
     @for(asignature of asignaturesType;track asignature){
     <div class="asignature-container">
         <h2>{{asignature.tipo_curso.toUpperCase()}}</h2>
-        @for(lesson of asignature.lesson; track lesson){
-
-        <div class="lesson">
-            <label>{{lesson.nombre_curso}}</label>
+        <div class="lessons-container">
+            @for(lesson of asignature.lesson; track lesson){
+            <div class="lesson-content">
+                <div class="lesson" style="background-image: url('{{getLessonImageUrl(lesson.image)}}');">
+                </div>
+                <label>{{lesson.nombre_curso}}</label>
+            </div>
+            }
         </div>
-        }
     </div>
     }
 </div>

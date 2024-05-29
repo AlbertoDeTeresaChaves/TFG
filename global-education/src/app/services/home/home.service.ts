@@ -1,26 +1,25 @@
 import { Injectable, OnInit } from '@angular/core';
 import { ApiService } from '../api/api.service';
-import { AsignatureStructure } from '../../models/asignatures-structure';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class HomeService implements OnInit{
-  userContent: any
-  userDataKey = "User"
-  constructor(private apiService : ApiService) {
-  }
+export class HomeService implements OnInit {
+  userContent: any;
+  userDataKey = 'User';
 
-  ngOnInit(){
-  }
+  constructor(private apiService: ApiService) {}
+
+  ngOnInit() {}
 
   setUser(datos: any) {
-    this.userContent = datos
+    this.userContent = datos;
     if (this.isLocalStorageAvailable()) {
-      localStorage.setItem(this.userDataKey, JSON.stringify(datos))
+      localStorage.setItem(this.userDataKey, JSON.stringify(datos));
     }
   }
+
   getUserData() {
     if (!this.userContent) {
       if (this.isLocalStorageAvailable()) {
@@ -34,9 +33,9 @@ export class HomeService implements OnInit{
   }
 
   clearUser() {
-    this.userContent = null
+    this.userContent = null;
     if (this.isLocalStorageAvailable()) {
-      localStorage.removeItem(this.userDataKey)
+      localStorage.removeItem(this.userDataKey);
     }
   }
 
@@ -51,17 +50,12 @@ export class HomeService implements OnInit{
     }
   }
 
-  getAsigaturesType(){
-    let asignaturesTypeList:any;
-    this.apiService.getAsigaturesTypes().subscribe(data=>{
-      asignaturesTypeList=data
-    })
-    return asignaturesTypeList
+  getAsigaturesType(): Observable<any[]> {
+    return this.apiService.getAsigaturesTypes();
   }
 
-  getLessons(type : string):Observable<any[]>{
-    return this.apiService.getAsignatureLessonsByType(type)
-    
-  }  
-  
+  getLessons(type: string): Observable<any[]> {
+    return this.apiService.getAsignatureLessonsByType(type);
+  }
 }
+

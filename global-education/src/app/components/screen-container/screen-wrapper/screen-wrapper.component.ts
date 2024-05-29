@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ToolbarComponent } from '../toolbar/toolbar.component';
-import { Router, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterModule, RouterOutlet } from '@angular/router';
 import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
@@ -11,7 +11,7 @@ import { HomeService } from '../../../services/home/home.service';
 @Component({
   selector: 'app-screen-wrapper',
   standalone: true,
-  imports: [ToolbarComponent, RouterOutlet,MatToolbarModule, MatIconModule,MatSidenavModule,MatListModule,MatButtonModule],
+  imports: [ToolbarComponent, RouterOutlet,MatToolbarModule, MatIconModule,MatSidenavModule,MatListModule,MatButtonModule,RouterLink,RouterModule],
   templateUrl: './screen-wrapper.component.html',
   styleUrl: './screen-wrapper.component.scss'
 })

@@ -8,8 +8,10 @@
         <div class="lessons-container">
             @for(lesson of asignature.lesson; track lesson){
             <div class="lesson-content">
+                <a routerLink={{getPathRouterLink(lesson.image)}}>
                 <div class="lesson" style="background-image: url('{{getLessonImageUrl(lesson.image)}}');">
                 </div>
+                </a>
                 <label>{{lesson.nombre_curso}}</label>
             </div>
             }

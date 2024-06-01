@@ -13,6 +13,7 @@ import { VocabularyStepperComponent } from './components/tests/english/vocabular
 import { GrammarStepperComponent } from './components/tests/english/grammar-container/grammar-stepper/grammar-stepper.component';
 import { WritingStepperComponent } from './components/tests/english/writing-container/writing-stepper/writing-stepper.component';
 import { ComprehensionStepperComponent } from './components/tests/english/comprehension-container/comprehension-stepper/comprehension-stepper.component';
+import { AboutMeComponent } from './components/about-me/about-me.component';
 
 export const routes: Routes = [
     {
@@ -49,7 +50,8 @@ export const routes: Routes = [
                     { path: 'Writing', component: WritingStepperComponent },
                     { path: 'Comprehension', component: ComprehensionStepperComponent }
                 ]
-            }
+            },
+            {path: 'about-me',component:AboutMeComponent}
         ]
     },
     { path: '', redirectTo: 'auth/login', pathMatch: 'full' }

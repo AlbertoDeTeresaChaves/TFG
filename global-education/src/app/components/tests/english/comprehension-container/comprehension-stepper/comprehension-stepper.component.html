@@ -1,1 +1,90 @@
-<p>comprehension-stepper works!</p>
+<div class="mat-stepper-container">
+    <mat-stepper labelPosition="bottom">
+        <form>
+            <mat-step label="Pregunta 1" state="question_mark">
+                <div class="radio-group-container">
+                    <label>What is the main idea of the passage: "The sun is the center of our solar system. It provides the necessary heat and light for life on Earth."</label><br>
+                    <mat-radio-group [(ngModel)]="respuestasUsuario[0]" name="pregunta_1">
+                        <mat-radio-button value="resp_1">The Earth orbits the sun.</mat-radio-button>
+                        <mat-radio-button value="resp_2">The sun is essential for life on Earth.</mat-radio-button>
+                        <mat-radio-button value="resp_3">The sun is a star.</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+                <div class="first-button-container">
+                    <button matStepperNext>Siguiente</button>
+                </div>
+            </mat-step>
+
+            <mat-step label="Pregunta 2" state="question_mark">
+                <div class="radio-group-container">
+                    <label>According to the passage, why do plants need sunlight?: "Plants need sunlight to perform photosynthesis, which allows them to make their own food."</label><br>
+                    <mat-radio-group [(ngModel)]="respuestasUsuario[1]" name="pregunta_2">
+                        <mat-radio-button value="resp_1">To grow taller</mat-radio-button>
+                        <mat-radio-button value="resp_2">To make their own food</mat-radio-button>
+                        <mat-radio-button value="resp_3">To produce flowers</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+                <div class="button-container">
+                    <button matStepperPrevious>Atras</button>
+                    <button matStepperNext>Siguiente</button>
+                </div>
+            </mat-step>
+
+            <mat-step label="Pregunta 3" state="question_mark">
+                <div class="radio-group-container">
+                    <label>What can be inferred from the sentence: "John looked out the window and saw dark clouds gathering in the sky."</label><br>
+                    <mat-radio-group [(ngModel)]="respuestasUsuario[2]" name="pregunta_3">
+                        <mat-radio-button value="resp_1">John is going to sleep.</mat-radio-button>
+                        <mat-radio-button value="resp_2">John is planning to go outside.</mat-radio-button>
+                        <mat-radio-button value="resp_3">It is likely going to rain soon.</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+                <div class="button-container">
+                    <button matStepperPrevious>Atras</button>
+                    <button matStepperNext>Siguiente</button>
+                </div>
+            </mat-step>
+
+            <mat-step label="Pregunta 4" state="question_mark">
+                <div class="radio-group-container">
+                    <label>Based on the passage, what is the author's purpose?: "The author describes the process of recycling and encourages readers to recycle more to help the environment."</label><br>
+                    <mat-radio-group [(ngModel)]="respuestasUsuario[3]" name="pregunta_4">
+                        <mat-radio-button value="resp_1">To inform readers about recycling</mat-radio-button>
+                        <mat-radio-button value="resp_2">To entertain readers with a story</mat-radio-button>
+                        <mat-radio-button value="resp_3">To persuade readers to recycle</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+                <div class="button-container">
+                    <button matStepperPrevious>Atras</button>
+                    <button matStepperNext>Siguiente</button>
+                </div>
+            </mat-step>
+
+            <mat-step label="Pregunta 5" state="question_mark">
+                <div class="radio-group-container">
+                    <label>What does the word "biodiversity" mean in the sentence: "Rainforests are important because they contain a high level of biodiversity"?</label><br>
+                    <mat-radio-group [(ngModel)]="respuestasUsuario[4]" name="pregunta_5">
+                        <mat-radio-button value="resp_1">The variety of life in an area</mat-radio-button>
+                        <mat-radio-button value="resp_2">The amount of rain an area receives</mat-radio-button>
+                        <mat-radio-button value="resp_3">The types of trees in an area</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+                <div class="button-container">
+                    <button matStepperPrevious>Atras</button>
+                    <button matStepperNext (click)="onSubmit()">Siguiente</button>
+                </div>
+            </mat-step>
+
+            <mat-step label="Resultado" state="emoji_objects">
+                <div class="progress-spinner">
+                    <mat-progress-spinner mode="determinate" value="{{this.valorSpinner}}" [diameter]="200"></mat-progress-spinner>
+                    <p>{{this.valorSpinner.toPrecision(3)}}%</p>
+                    <p>{{this.numeroCorrectas()}} de {{this.respuestasCorrectas.length}}</p>
+                </div>
+                <div class="last-button-container">
+                    <button routerLink="/GlobalEducation/home">Finalizar</button>
+                </div>
+            </mat-step>
+        </form>
+    </mat-stepper>
+</div>

@@ -1,1 +1,90 @@
-<p>teoria-numeros-stepper works!</p>
+<div class="mat-stepper-container">
+    <mat-stepper labelPosition="bottom">
+        <form>
+            <mat-step label="Pregunta 1" state="question_mark">
+                <div class="radio-group-container">
+                    <label>¿Cuál es el menor número primo?</label><br>
+                    <mat-radio-group [(ngModel)]="respuestasUsuario[0]" name="pregunta_1">
+                        <mat-radio-button value="resp_1">4</mat-radio-button>
+                        <mat-radio-button value="resp_2">2</mat-radio-button>
+                        <mat-radio-button value="resp_3">1</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+                <div class="first-button-container">
+                    <button matStepperNext>Siguiente</button>
+                </div>
+            </mat-step>
+            
+            <mat-step label="Pregunta 2" state="question_mark">
+                <div class="radio-group-container">
+                    <label>¿Qué número no es primo?</label><br>
+                    <mat-radio-group [(ngModel)]="respuestasUsuario[1]" name="pregunta_2">
+                        <mat-radio-button value="resp_1">4</mat-radio-button>
+                        <mat-radio-button value="resp_2">5</mat-radio-button>
+                        <mat-radio-button value="resp_3">7</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+                <div class="button-container">
+                    <button matStepperPrevious>Atras</button>
+                    <button matStepperNext>Siguiente</button>
+                </div>
+            </mat-step>
+            
+            <mat-step label="Pregunta 3" state="question_mark">
+                <div class="radio-group-container">
+                    <label>¿Qué es un número perfecto?</label><br>
+                    <mat-radio-group [(ngModel)]="respuestasUsuario[2]" name="pregunta_3">
+                        <mat-radio-button value="resp_1">Un número divisible solo por 1 y por sí mismo</mat-radio-button>
+                        <mat-radio-button value="resp_2">Un número cuya suma de dígitos es igual a 10</mat-radio-button>
+                        <mat-radio-button value="resp_3">Un número que es igual a la suma de sus divisores propios positivos</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+                <div class="button-container">
+                    <button matStepperPrevious>Atras</button>
+                    <button matStepperNext>Siguiente</button>
+                </div>
+            </mat-step>
+            
+            <mat-step label="Pregunta 4" state="question_mark">
+                <div class="radio-group-container">
+                    <label>¿Cuál es el mayor divisor común (MCD) de 18 y 24?</label><br>
+                    <mat-radio-group [(ngModel)]="respuestasUsuario[3]" name="pregunta_4">
+                        <mat-radio-button value="resp_1">2</mat-radio-button>
+                        <mat-radio-button value="resp_2">6</mat-radio-button>
+                        <mat-radio-button value="resp_3">3</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+                <div class="button-container">
+                    <button matStepperPrevious>Atras</button>
+                    <button matStepperNext>Siguiente</button>
+                </div>
+            </mat-step>
+            
+            <mat-step label="Pregunta 5" state="question_mark">
+                <div class="radio-group-container">
+                    <label>¿Qué propiedad cumple el número 7 en el conjunto de los números primos?</label><br>
+                    <mat-radio-group [(ngModel)]="respuestasUsuario[4]" name="pregunta_5">
+                        <mat-radio-button value="resp_1">Es primo</mat-radio-button>
+                        <mat-radio-button value="resp_2">Es compuesto</mat-radio-button>
+                        <mat-radio-button value="resp_3">Es par</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+                <div class="button-container">
+                    <button matStepperPrevious>Atras</button>
+                    <button matStepperNext (click)="onSubmit()">Siguiente</button>
+                </div>
+            </mat-step>
+            
+            <mat-step label="Resultado" state="emoji_objects">
+                <div class="progress-spinner">
+                    <mat-progress-spinner mode="determinate" value="{{this.valorSpinner}}" [diameter]="200"></mat-progress-spinner>
+                    <p>{{this.valorSpinner.toPrecision(3)}}%</p>
+                    <p>{{this.numeroCorrectas()}} de {{this.respuestasCorrectas.length}}</p>
+                </div>
+                <div class="last-button-container">
+                    <button routerLink="/GlobalEducation/home">Finalizar</button>
+                </div>
+            </mat-step>
+        </form>
+    </mat-stepper>
+</div>

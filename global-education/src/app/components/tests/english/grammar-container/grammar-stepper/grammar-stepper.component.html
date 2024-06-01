@@ -1,1 +1,90 @@
-<p>grammar-stepper works!</p>
+<div class="mat-stepper-container">
+    <mat-stepper labelPosition="bottom">
+        <form>
+            <mat-step label="Pregunta 1" state="question_mark">
+                <div class="radio-group-container">
+                    <label>Which is the correct form of the verb in past tense: "I ___ to the store yesterday"?</label><br>
+                    <mat-radio-group [(ngModel)]="respuestasUsuario[0]" name="pregunta_1">
+                        <mat-radio-button value="resp_1">goed</mat-radio-button>
+                        <mat-radio-button value="resp_2">went</mat-radio-button>
+                        <mat-radio-button value="resp_3">go</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+                <div class="first-button-container">
+                    <button matStepperNext>Siguiente</button>
+                </div>
+            </mat-step>
+
+            <mat-step label="Pregunta 2" state="question_mark">
+                <div class="radio-group-container">
+                    <label>Choose the correct sentence:</label><br>
+                    <mat-radio-group [(ngModel)]="respuestasUsuario[1]" name="pregunta_2">
+                        <mat-radio-button value="resp_1">She don't like apples.</mat-radio-button>
+                        <mat-radio-button value="resp_2">She doesn't like apples.</mat-radio-button>
+                        <mat-radio-button value="resp_3">She doesn't likes apples.</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+                <div class="button-container">
+                    <button matStepperPrevious>Atras</button>
+                    <button matStepperNext>Siguiente</button>
+                </div>
+            </mat-step>
+
+            <mat-step label="Pregunta 3" state="question_mark">
+                <div class="radio-group-container">
+                    <label>Which is the correct plural form of "child"?</label><br>
+                    <mat-radio-group [(ngModel)]="respuestasUsuario[2]" name="pregunta_3">
+                        <mat-radio-button value="resp_1">childs</mat-radio-button>
+                        <mat-radio-button value="resp_2">childes</mat-radio-button>
+                        <mat-radio-button value="resp_3">children</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+                <div class="button-container">
+                    <button matStepperPrevious>Atras</button>
+                    <button matStepperNext>Siguiente</button>
+                </div>
+            </mat-step>
+
+            <mat-step label="Pregunta 4" state="question_mark">
+                <div class="radio-group-container">
+                    <label>Fill in the blank: "They ___ going to the party tonight."</label><br>
+                    <mat-radio-group [(ngModel)]="respuestasUsuario[3]" name="pregunta_4">
+                        <mat-radio-button value="resp_1">is</mat-radio-button>
+                        <mat-radio-button value="resp_2">am</mat-radio-button>
+                        <mat-radio-button value="resp_3">are</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+                <div class="button-container">
+                    <button matStepperPrevious>Atras</button>
+                    <button matStepperNext>Siguiente</button>
+                </div>
+            </mat-step>
+
+            <mat-step label="Pregunta 5" state="question_mark">
+                <div class="radio-group-container">
+                    <label>Identify the correct sentence:</label><br>
+                    <mat-radio-group [(ngModel)]="respuestasUsuario[4]" name="pregunta_5">
+                        <mat-radio-button value="resp_1">He has gone to the market.</mat-radio-button>
+                        <mat-radio-button value="resp_2">He have gone to the market.</mat-radio-button>
+                        <mat-radio-button value="resp_3">He has go to the market.</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+                <div class="button-container">
+                    <button matStepperPrevious>Atras</button>
+                    <button matStepperNext (click)="onSubmit()">Siguiente</button>
+                </div>
+            </mat-step>
+
+            <mat-step label="Resultado" state="emoji_objects">
+                <div class="progress-spinner">
+                    <mat-progress-spinner mode="determinate" value="{{this.valorSpinner}}" [diameter]="200"></mat-progress-spinner>
+                    <p>{{this.valorSpinner.toPrecision(3)}}%</p>
+                    <p>{{this.numeroCorrectas()}} de {{this.respuestasCorrectas.length}}</p>
+                </div>
+                <div class="last-button-container">
+                    <button routerLink="/GlobalEducation/home">Finalizar</button>
+                </div>
+            </mat-step>
+        </form>
+    </mat-stepper>
+</div>

@@ -27,7 +27,6 @@ export class DialogContentExampleDialog { }
 })
 export class RegisterComponent implements OnInit {
 
-  datos2: any[] = [];
 
   constructor(private dialog: MatDialog, private apiService: ApiService) {
 
@@ -35,10 +34,7 @@ export class RegisterComponent implements OnInit {
 
 
   ngOnInit(): void {
-    let datos: any[] = [];
-    this.apiService.getDatos().forEach(data => {
-      datos = data
-    })
+
 
   }
 

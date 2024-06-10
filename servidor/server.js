@@ -7,7 +7,6 @@ app.use(express.json());
 
 const usuarioRoutes = require('./routes/usuarioRoutes');
 
-// Usar rutas
 app.use('/api', usuarioRoutes);
 
 

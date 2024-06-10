@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const connection = require('../config/database');
 
-// Ruta para obtener todos los datos
 router.get('/datos', (req, res) => {
   const query = 'SELECT * FROM usuarios'; 
   connection.query(query, (err, results) => {
@@ -20,7 +19,7 @@ router.get('/register/:user',(req, res)=>{
     const username = datos.name;
     const email = datos.email;
     const password = datos.password;
-    const selectQuery = 'SELECT * FROM usuarios WHERE correo = ?'; // Ajusta esta consulta según tu necesidad
+    const selectQuery = 'SELECT * FROM usuarios WHERE correo = ?';
     const insertQuery = 'INSERT INTO usuarios VALUES(?,?,?,?)';
     connection.query(selectQuery, [email], (err, results) => {
         if (err) {
@@ -44,11 +43,11 @@ router.get('/register/:user',(req, res)=>{
 });
 
 
-router.get('/login/:user',(req, res)=>{
+router.get('/login/:user',(req, res)=>{//Obtiene el usuario
   const datos = JSON.parse(decodeURIComponent(req.params.user));
   const email = datos.email;
   const password = datos.password;
-  const selectQuery = 'SELECT user_id,nombre,correo FROM usuarios WHERE correo = ? and contraseña = ?'; // Ajusta esta consulta según tu necesidad
+  const selectQuery = 'SELECT user_id,nombre,correo FROM usuarios WHERE correo = ? and contraseña = ?';
   connection.query(selectQuery, [email,password], (err, results) => {
       if (err) {
         console.error('Error ejecutando la consulta:', err);
@@ -64,7 +63,7 @@ router.get('/login/:user',(req, res)=>{
     });
 });
 
-router.get('/asignaturesType', (req, res) => {
+router.get('/asignaturesType', (req, res) => {//Obtenemos todas las asignaturas
   const selectQuery = 'SELECT DISTINCT(tipo_curso) FROM cursos';
   connection.query(selectQuery, (err, results) => {
       if (err) {
@@ -76,7 +75,7 @@ router.get('/asignaturesType', (req, res) => {
 });
 
 
-router.get('/asignaturesType/:type', (req, res) => {
+router.get('/asignaturesType/:type', (req, res) => { //Obtenemos el tipo de la asignatura
   const type = JSON.parse(decodeURIComponent(req.params.type))
   const selectQuery = 'SELECT nombre_curso,image FROM cursos where tipo_curso=?';
   connection.query(selectQuery, [type],(err, results) => {

@@ -12,10 +12,6 @@ export class ApiService {
 
   private apiUrl = 'http://localhost:3000/api';
 
-  getDatos(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/datos`);
-  }
-
   getUsuarioById(id: number): Observable<User> {
     return this.http.get<User>(`${this.apiUrl}/usuario/${id}`);
   }
